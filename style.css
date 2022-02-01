@@ -5,6 +5,54 @@ body {
     margin: 0;
 }
 
+#end {
+    position: absolute;
+    width:400px;
+    height: 170px;
+    left: calc(50% - 200px);
+    top: calc(50% - 85px);
+    border: 3px;
+    border-style: solid;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: 1;
+    border-radius: 6px;
+    font-size: larger;
+}
+
+#shareButton {
+    width: 200px;
+    height: 75px;
+    background-color: rgb(0, 145, 19);
+    left: 100px;
+    top: 70px;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    color: white;
+    cursor: pointer;
+}
+#copyConfirm {
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    left: calc(50% - 125px);
+    top: 20%;
+    border: 1px;
+    border-style: solid;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 6px;
+    z-index: 1;
+}
+
 #container {
     display: flex;
     justify-content: center;

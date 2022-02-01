@@ -1,13 +1,16 @@
 let numbers = document.getElementsByClassName("number")
 let guessesDiv = document.getElementById("guesses")
+let endDiv = document.getElementById("end")
+let shareButton = document.getElementById("shareButton")
+let container = document.getElementById("container")
 
 let guess_count = 0;
 
 let time = new Date()
 
-let year = time.getFullYear()
-let month = time.getMonth()
-let day = time.getDay()
+let year = time.getFullYear() * 10000
+let month = time.getMonth() * 10000
+let day = time.getDate() * 10000
 
 let todays_number = wichmann_hill(year, month, day)
 
@@ -42,8 +45,39 @@ function endGame() {
         let clone = num.cloneNode(true);
         num.parentNode.replaceChild(clone, num);
     }
+
+    container.style.filter = "blur(2px)"
+
+    endDiv.style.display = "flex";
+    let text = document.createElement("p");
+    text.innerHTML = (guess_count > 9) ? "You are too dumb for Digitle." : `You got the correct digit in ${guess_count} guess${"es".repeat(Math.min(guess_count-1,1))}.`;
+    text.id = "end-text";
+    endDiv.prepend(text)
+
+
+    shareButton.addEventListener("click", () => {
+        $("#copyConfirm").css("display", "flex").hide().fadeIn(100);
+        navigator.clipboard.writeText(getShare());
+        setTimeout(() => {
+            $("#copyConfirm").css("display", "flex").fadeOut(200);
+        },1500)
+    });
 }
 
+function getShare() {
+    if(guess_count > 9) {
+        return "I'm too dumb for Digitle!"
+    }
+
+    let result = `Digitle ${guess_count}/10\n`;
+
+    for (let i = 1; i < guess_count; i++) {
+        result += "⬜\n";
+    }
+
+    result += "🟩";
+    return result;
+}
 
 function fmod(a,b) { return Number((a - (Math.floor(a / b) * b)).toPrecision(8)); };
 
