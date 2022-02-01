@@ -26,12 +26,14 @@ function input(number) {
         addGuessDiv(number.innerHTML, true)
         number.classList.add('number-right')
         endGame()
+        return;
     } else {
         addGuessDiv(number.innerHTML, false)
         number.classList.add('number-wrong')
     }
 
     if(guess_count > 9) {
+        guess_count++;
         endGame()
     }
 }
@@ -50,7 +52,7 @@ function endGame() {
 
     endDiv.style.display = "flex";
     let text = document.createElement("p");
-    text.innerHTML = (guess_count > 9) ? "You are too dumb for Digitle." : `You got the correct digit in ${guess_count} guess${"es".repeat(Math.min(guess_count-1,1))}.`;
+    text.innerHTML = (guess_count > 10) ? "You are too dumb for Digitle." : `You got the correct digit in ${guess_count} guess${"es".repeat(Math.min(guess_count-1,1))}.`;
     text.id = "end-text";
     endDiv.prepend(text)
 
@@ -65,7 +67,7 @@ function endGame() {
 }
 
 function getShare() {
-    if(guess_count > 9) {
+    if(guess_count > 10) {
         return "I'm too dumb for Digitle!"
     }
 
