@@ -77,7 +77,8 @@ function getShare() {
         result += "⬜\n";
     }
 
-    result += "🟩";
+    result += "🟩\n";
+    result += "https://digitle.madvox.de"
     return result;
 }
 
