@@ -5,6 +5,8 @@ let shareButton = document.getElementById("shareButton")
 let container = document.getElementById("container")
 
 let guess_count = 0;
+let first_guess = -1;
+let second_guess = -1;
 
 let time = new Date()
 
@@ -20,6 +22,23 @@ for (let i = 0; i < numbers.length; i++) {
 }
 
 function input(number) {
+    if(todays_number != 6 && todays_number != 9) {
+        if(guess_count == 0) {
+            first_guess = number.innerHTML
+        } else if(guess_count == 1) {
+            second_guess = number.innerHTML
+        }
+    }
+
+    if(first_guess == 6 && second_guess == 9) {
+        $("#nice").css("display", "flex").hide().fadeIn(100);
+        setTimeout(() => {
+            $("#nice").css("display", "flex").fadeOut(200);
+        },1500)
+        first_guess = -1
+        second_guess = -1
+    }
+
     guess_count++;
     number.classList.remove('number')
     if(number.innerHTML == todays_number) {
