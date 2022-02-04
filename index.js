@@ -21,7 +21,25 @@ for (let i = 0; i < numbers.length; i++) {
     num.addEventListener("click", () => input(num))
 }
 
+document.addEventListener("keydown", e => {
+    console.log(e.key)
+    
+    if(isNaN(e.key)) {
+        return;
+    }
+
+    let number = numbers.item(parseInt(e.key));
+    if (number != null) {
+        input(number);
+    }
+});
+
 function input(number) {
+    if(guess_count > 9) {
+        return;
+    }
+
+
     if(todays_number != 6 && todays_number != 9) {
         if(guess_count == 0) {
             first_guess = number.innerHTML
@@ -40,7 +58,7 @@ function input(number) {
     }
 
     guess_count++;
-    number.classList.remove('number')
+    //number.classList.remove('number')
     if(number.innerHTML == todays_number) {
         addGuessDiv(number.innerHTML, true)
         number.classList.add('number-right')
