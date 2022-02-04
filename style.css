@@ -95,6 +95,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     font-weight: bold;
+    width: 100%;
 }
 
 #game {
@@ -162,6 +163,14 @@ body::-webkit-scrollbar {
     margin: 3px;
     font-size: 30px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+    /* For mobile phones: */
+    .number {
+        width: 9% !important;
+        height: 53px;
+    }
 }
 
 .number-wrong {
