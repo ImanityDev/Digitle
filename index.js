@@ -105,7 +105,7 @@ function endGame() {
 
 function getShare() {
     if(guess_count > 10) {
-        return "I'm too dumb for Digitle!"
+        return "I'm too dumb for Digitle!\n\nhttps://digitle.madvox.de"
     }
 
     let result = `Digitle ${guess_count}/10\n`;
