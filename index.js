@@ -22,8 +22,6 @@ for (let i = 0; i < numbers.length; i++) {
 }
 
 document.addEventListener("keydown", e => {
-    console.log(e.key)
-    
     if(isNaN(e.key)) {
         return;
     }
